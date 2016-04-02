@@ -26,6 +26,8 @@ library(ggplot2)
 ggplot(activity_data_clean,aes(x = date,y = steps))+geom_bar(stat="identity")+labs(title = "Histogram of Total Number of Steps Taken Each Day", x = "Date", y = "Total number of steps")
 ```
 
+![Histogram of Total Number of steps each Day](instructions_fig/TotalStepsHistogram.png) 
+
 * Calculate the mean and median total number of steps taken per day
 
 Mean total number of steps taken per day:
@@ -48,6 +50,7 @@ avgSteps <- aggregate(activity_data_clean$steps, list(interval = as.numeric(as.c
 ggplot(avgSteps, aes(interval, avgSteps[2])) + geom_line() + labs(title = "Time Series Plot of the 5-minute Interval", x = "5-minute intervals", y = "Average Number of Steps Taken")
 ```
 
+![Time series plot of daily activity pattern ](instructions_fig/fiveMinuteIntervalTimeSeries.png) 
 * Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 ```{r}
 avgSteps[avgSteps$x == max(avgSteps$x), ]
@@ -79,6 +82,8 @@ sum(is.na(newActivityData))
 ```{r}
 ggplot(newActivityData, aes(date, steps)) + geom_bar(stat = "identity")+labs(title = "Histogram of Total Number of Steps Taken Each Day (no missing data)", x = "Date", y = "Total number of steps")
 ```
+
+![Histogram of Total Number of Steps each day with NA values imputed](instructions_fig/HistogramNoNA.png) 
 
 * Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
@@ -133,3 +138,4 @@ xyplot(avgSteps$x ~ avgSteps$interval | avgSteps$weekdays,
        layout = c(1, 2), type = "l", 
        xlab = "Interval", ylab = "Number of steps")
 ```
+![Time series plot comparison of daily activity for weekdays and weekends](instructions_fig/weekend vs Weekday.png) 
