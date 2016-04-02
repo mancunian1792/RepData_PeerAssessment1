@@ -35,6 +35,8 @@ Mean total number of steps taken per day:
 totalSteps <- aggregate(activity_data_clean$steps, list(activity_data_clean$date), FUN = "sum")$x
 mean(totalSteps)
 ```
+
+
 Median total number of steps taken per day:
 ```{r}
 median(totalSteps)
